@@ -1,10 +1,12 @@
 // import Komponen from "./Materi/Komponen";
-import Components from "./Tugas/Component";
+// import Components from "./Tugas/Component";
+
+import Styling from "./Materi/Styling";
 
 function App() {
   return (
     <div className="App">
-      <Components />
+      <Styling />
     </div>
   );
 }
