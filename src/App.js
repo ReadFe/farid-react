@@ -1,12 +1,10 @@
-// import Komponen from "./Materi/Komponen";
-// import Components from "./Tugas/Component";
+import Form from "./Tugas/Form";
 
-import Styling from "./Tugas/Styling";
 
 function App() {
   return (
     <div className="App">
-      <Styling />
+      <Form />
     </div>
   );
 }
