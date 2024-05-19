@@ -15,11 +15,14 @@ const Input = ({label, type, name, onChange}) => {
 }
 
 const ShowError = ({errors}) => {
-    return (
-        <ul style={{color: 'red', marginLeft: '-20px' }}>
-            {errors.map((error, i) => <li key={i}>{error}</li> )}
-        </ul>
-    )
+    if(errors.length > 0) {
+        return (
+            <ul style={{color: 'red', marginLeft: '-20px' }}>
+                <li>{errors}</li>
+            </ul>
+        )
+    }
+    
 }
 
 export default class ValidatorScript extends React.Component {
@@ -27,7 +30,8 @@ export default class ValidatorScript extends React.Component {
     state = {
         email: '',
         password: '',
-        errors: ''
+        emailErrors: '',
+        passErrors: ''
     }
 
     handleSubmit = (e) => {
@@ -51,8 +55,11 @@ export default class ValidatorScript extends React.Component {
             `)
         }
         this.setState({
-            errors: [
+            emailErrors: [
                 ...validation.errors.get('email'),
+            ],
+            
+            passErrors: [
                 ...validation.errors.get('password')
             ]
         })
@@ -71,15 +78,18 @@ export default class ValidatorScript extends React.Component {
         return (
             <div style={style}>
                 <form onSubmit={this.handleSubmit}>
-                    {
-                        this.state.errors && <ShowError errors={this.state.errors} />
-                    }
                     <h4>Login Form</h4>
                     <Input type="email" name="email" label="Email"
                     onChange={value => this.setState({email: value})} />
+                    {
+                        this.state.emailErrors && <ShowError errors={this.state.emailErrors} />
+                    }
 
                     <Input type="password" name="password" label="Password" 
                     onChange={value => this.setState({password: value})} />
+                    {
+                        this.state.passErrors && <ShowError errors={this.state.passErrors} />
+                    }
                     <br />
                     <button>Submit</button>
                 </form>

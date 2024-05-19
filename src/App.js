@@ -1,10 +1,11 @@
-import Form from "./Tugas/Form";
+// import Hooks from "./Materi/Hooks";
+import ValidatorScript from "./Tugas/Form/Component/ValidatorScript";
 
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <ValidatorScript/>
     </div>
   );
 }
